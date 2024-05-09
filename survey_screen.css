@@ -1,0 +1,126 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: transparent;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+  margin-right: 20px;
+}
+
+nav a:hover {
+  color: rgb(0, 153, 255);
+}
+
+.left-link {
+  margin-right: auto;
+  font-weight: bold;
+  color: black;
+}
+
+.active {
+  color: rgb(0, 153, 255);
+}
+
+form {
+  margin-left: 20px;
+}
+
+.input-field {
+  width: 300px;
+  border: 1px solid rgb(0, 153, 255);
+  padding: 5px;
+  margin-left: 250px;
+  color: rgb(0, 153, 255);
+}
+
+.food p {
+  margin-right: 40px;
+}
+
+.food input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(0, 153, 255);
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.food label {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+thead th {
+  background-color: grey;
+  color: black;
+  border: 2px solid blue;
+  width: calc(80% / 6);
+}
+
+tbody td {
+  color: black;
+  border: 2px solid blue;
+  width: calc(80% / 6);
+}
+
+tbody td:first-child {
+  font-weight: none;
+}
+
+tbody td input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #00a2ff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  outline: none;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+tbody td input[type="radio"]:checked::before {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: black;
+  margin: 3px auto;
+}
+
+input[type="submit"] {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
