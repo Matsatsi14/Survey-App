@@ -1,32 +1,32 @@
 <?php
 
-$name = isset($_REQUEST['name']) ? $_REQUEST['name'] : "";
-$email = isset($_REQUEST['email']) ? $_REQUEST['email'] : "";
-$dob = isset($_REQUEST['dob']) ? $_REQUEST['dob'] : "";
-$contactnumber = isset($_REQUEST['contactnumber']) ? $_REQUEST['contactnumber'] : "";
-$favorite_foods = isset($_REQUEST['favorite_foods']) ? implode(", ", $_REQUEST['favorite_foods']) : "";
-$agreement1 = isset($_REQUEST['agreement1']) ? $_REQUEST['agreement1'] : "";
-$agreement2 = isset($_REQUEST['agreement2']) ? $_REQUEST['agreement2'] : "";
-$agreement3 = isset($_REQUEST['agreement3']) ? $_REQUEST['agreement3'] : "";
-$agreement4 = isset($_REQUEST['agreement4']) ? $_REQUEST['agreement4'] : "";
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    
+    $name = isset($_POST['name']) ? $_POST['name'] : "";
+    $email = isset($_POST['email']) ? $_POST['email'] : "";
+    $dob = isset($_POST['dob']) ? $_POST['dob'] : "";
+    $contactnumber = isset($_POST['contactnumber']) ? $_POST['contactnumber'] : "";
+    $favorite_foods = isset($_POST['favorite_foods']) ? implode(", ", $_POST['favorite_foods']) : "";
+    $agreement1 = isset($_POST['agreement1']) ? $_POST['agreement1'] : "";
+    $agreement2 = isset($_POST['agreement2']) ? $_POST['agreement2'] : "";
+    $agreement3 = isset($_POST['agreement3']) ? $_POST['agreement3'] : "";
+    $agreement4 = isset($_POST['agreement4']) ? $_POST['agreement4'] : "";
 
+    require_once("config.php");
 
-require_once("config.php");
+    $conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE) or die("Error, Unable to connect to database!");
 
+    $query = "INSERT INTO SurveyResponses (name, email, dob, contactnumber, favorite_foods, agreement1, agreement2, agreement3, agreement4)
+                VALUES ('$name', '$email', '$dob', '$contactnumber', '$favorite_foods', '$agreement1', '$agreement2', '$agreement3', '$agreement4')";
+    $result = mysqli_query($conn, $query) or die("Error, unable to insert survey responses");
 
-$conn = mysqli_connect(SERVERNAME, USERNAME, PASSWORD, DATABASE) or die("Error, Unable to connect to database!");
+    mysqli_close($conn);
 
-
-$query = "INSERT INTO SurveyResponses (name, email, dob, contactnumber, favorite_foods, agreement1, agreement2, agreement3, agreement4)
-            VALUES ('$name', '$email', '$dob', '$contactnumber', '$favorite_foods', '$agreement1', '$agreement2', '$agreement3', '$agreement4')";
-$result = mysqli_query($conn, $query) or die("Error, unable to insert survey responses");
-
-
-mysqli_close($conn);
-
-
+    
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit;
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,7 +104,7 @@ mysqli_close($conn);
   </div>
 </nav>
     <form
-      action="survey_screen.php"
+      action="#"
       method="POST"
       onsubmit="showConfirmationMessage(document.getElementById('name').value); return validateForm();"
       id="survey-form"
@@ -181,10 +181,11 @@ mysqli_close($conn);
       <table border="1">
         <thead>
           <tr>
-            <th>Agreement</th>
+            <th></th>
             <th>Strongly Agree</th>
-            <th>Neutral</th>
             <th>Agree</th>
+            <th>Neutral</th>
+            
             <th>Disagree</th>
             <th>Strongly Disagree</th>
           </tr>

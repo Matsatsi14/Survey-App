@@ -48,20 +48,13 @@ form {
   margin-right: 40px;
 }
 
-.food input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 1px solid rgb(0, 153, 255);
-  border-radius: 3px;
-  margin-right: 5px;
-}
-
 .food label {
   display: inline-block;
   margin-right: 10px;
+}
+
+input[type="checkbox" i] {
+  border: 1px solid #00a2ff;
 }
 
 table {
@@ -72,13 +65,13 @@ table {
 thead th {
   background-color: grey;
   color: black;
-  border: 2px solid blue;
+  border: 1px solid black;
   width: calc(80% / 6);
 }
 
 tbody td {
   color: black;
-  border: 2px solid blue;
+  border: 1px solid #00a2ff;
   width: calc(80% / 6);
 }
 
@@ -96,7 +89,7 @@ tbody td input[type="radio"] {
   height: 20px;
   outline: none;
   cursor: pointer;
-  margin: 0 auto;
+  margin-right: 100px;
 }
 
 tbody td input[type="radio"]:checked::before {
