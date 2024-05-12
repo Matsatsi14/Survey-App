@@ -73,7 +73,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
           return false;
         }
 
-        let age = new Date().getFullYear() - new Date(dob).getFullYear();
+        let today = new Date();
+        let birthDate = new Date(dob);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        let monthDiff = today.getMonth() - birthDate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+
         if (age < 5 || age > 120) {
           alert(
             "You must be between the ages of 5 and 120 to fill out this survey."
